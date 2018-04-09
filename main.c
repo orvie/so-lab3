@@ -24,6 +24,8 @@
 //Declarations section
 #define TAM 100
 
+void processCommand(int* flag, char *command);
+
 /*
  * 
  */
@@ -58,13 +60,14 @@ int main() {
     
 }
 
-void processCommand(int* flag, char* command){
-    
+void processCommand(int *flag, char command[]){
     printf( "%s","my-cli will exit. Do you want to continue.? y/n ");
     fgets(command, 10, stdin);
-    if (strcmp(command,"y") == 0 || strcmp(command,"Y") == 0) {
-        flag = -1;
-    }
 
+    if (strcmp(command,"y") == 0 || strcmp(command,"Y") == 0) {
+        int res = -1;
+        flag = &res;
+    }
+    
 }
 
