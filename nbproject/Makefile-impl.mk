@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=my-cli
+PROJECTNAME=so-lab3
 
 # Active Configuration
 DEFAULTCONF=Debug
