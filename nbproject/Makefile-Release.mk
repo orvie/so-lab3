@@ -37,7 +37,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/mycp.o \
-	${OBJECTDIR}/mykill.o \
 	${OBJECTDIR}/mytime.o \
 	${OBJECTDIR}/parser.o
 
@@ -75,11 +74,6 @@ ${OBJECTDIR}/mycp.o: mycp.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mycp.o mycp.c
-
-${OBJECTDIR}/mykill.o: mykill.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mykill.o mykill.c
 
 ${OBJECTDIR}/mytime.o: mytime.c
 	${MKDIR} -p ${OBJECTDIR}
