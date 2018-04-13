@@ -38,6 +38,10 @@
 #define MY_GREP "mygrep"
 #define MY_TIME "mytime"
 
+#define PS_PATH "/bin/ps"
+#define GREP_PATH  "/bin/grep"
+#define PS_INFO_PATH "./bin/psinfo"
+
 
 void processMyExit(int *flag);
 void processMyPWD(int background, int *flag, pid_t *pid);
@@ -48,6 +52,7 @@ void processMyGrep(int background, int *flag, pid_t *pid, char **items);
 void processMyEcho(int background, int *flag, pid_t *pid, int num, char **items);
 void myTime();
 void copy_file(char *f_org, char *f_dest);
+void processMyPsInfo(int background, int *flag, pid_t *pid, char **items);
 
 /*
  * 
@@ -75,12 +80,16 @@ int main() {
 
         //Se valida que al menos ingreso un comando
         if (num > 0) {
+            
             if (strcmp(items[0], MY_PWD) == 0 && num == 1) {
                 processMyPWD(background, &flag, &pid);
+                
             } else if (strcmp(items[0], MY_EXIT) == 0) {
                 processMyExit(&flag);
+                
             } else if (strcmp(items[0], MY_PS_INFO) == 0) {
-                execv("./bin/psinfo", items);
+                processMyPsInfo(background, &flag, &pid, items);
+                
             } else if (strcmp(items[0], MY_CP) == 0) {
                 //Validamos que venga el origen y destino
                 if (num > 2) {
@@ -88,7 +97,6 @@ int main() {
                 } else {
                     printf("%s", "Invalid arguments. <orgin> <dest>\n");
                 }
-
             }//
             else if (strcmp(items[0], MY_KILL) == 0) {
 
@@ -97,20 +105,23 @@ int main() {
                 } else {
                     printf("%s", "Invalid arguments. <signal> <pid...>\n");
                 }
-
             } else if (strcmp(items[0], MY_ECHO) == 0) {
+                
                 processMyEcho(background, &flag, &pid, num, items);
-            } else if (strcmp(items[0], "myclr") == 0) {
+            } else if (strcmp(items[0], MY_CLEAR) == 0) {
+                
                 system("clear");
                 //printf("\x1b[s\x1b[2J\x1b[10;25H\x1b[u");
                 //printf("\033[H\033[J");
             } else if (strcmp(items[0], MY_PAUSE) == 0) {
+                
                 while (getchar() != '\n');
             } else if (strcmp(items[0], MY_PS) == 0) {
+                
                 pid = fork();
                 if (pid == 0) {
                     char *comando[num + 1];
-                    comando[0] = "/bin/ps";
+                    comando[0] = PS_PATH;
                     if (num > 1) {
                         int i;
                         for (i = 1; i < num; i++) {
@@ -118,7 +129,7 @@ int main() {
                         }
                     }
                     comando[num] = NULL;
-                    execv("/bin/ps", comando);
+                    execv(PS_PATH, comando);
                     flag = FLAG_EXIT;
                 } else if (pid != -1) {
                     if (background == 1) {
@@ -127,12 +138,12 @@ int main() {
                         wait(NULL);
                     }
                 }
-
             } else if (strcmp(items[0], MY_GREP) == 0) {
+                
                 pid = fork();
                 if (pid == 0) {
                     char *comando[num + 1];
-                    comando[0] = "/bin/grep";
+                    comando[0] = GREP_PATH;
                     if (num > 1) {
                         int i;
                         for (i = 1; i < num; i++) {
@@ -140,7 +151,7 @@ int main() {
                         }
                     }
                     comando[num] = NULL;
-                    execv("/bin/grep", comando);
+                    execv(GREP_PATH, comando);
                     flag = FLAG_EXIT;
                 } else if (pid != -1) {
                     if (background == 1) {
@@ -160,13 +171,11 @@ int main() {
                         printf("[%d]\n", pid);
                     } else {
                         waitpid(pid, NULL, 0);
-
                     }
                 }
 
             }
         }
-
 
     } while (flag != -1);
 
@@ -206,6 +215,21 @@ void processMyCp(int background, int *flag, pid_t *pid, char *origin, char *des)
     *pid = fork();
     if (*pid == 0) {
         copy_file(origin, des);
+        //Esto para que el ciclo del hijo finalice una vez termine la operacion
+        *flag = FLAG_EXIT;
+    } else if (*pid != -1) {
+        if (background == 1) {
+            printf("[%d]\n", *pid);
+        } else {
+            wait(NULL);
+        }
+    }
+}
+
+void processMyPsInfo(int background, int *flag, pid_t *pid, char **items) {
+    *pid = fork();
+    if (*pid == 0) {
+        execv(PS_INFO_PATH, items);
         //Esto para que el ciclo del hijo finalice una vez termine la operacion
         *flag = FLAG_EXIT;
     } else if (*pid != -1) {
@@ -311,9 +335,6 @@ void myTime() {
     printf("%s\n", output);
 }
 
-int getPipeIndex(){
-    
-    
-    
+int getPipeIndex() {
     return -1;
 }
