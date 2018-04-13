@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=so-lab3
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/so-lab3
+CND_ARTIFACT_NAME_Debug=my-cli
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/my-cli
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=so-lab3.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/so-lab3.tar
+CND_PACKAGE_NAME_Debug=my-cli.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/my-cli.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=so-lab3
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/so-lab3
+CND_ARTIFACT_NAME_Release=my-cli
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/my-cli
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=so-lab3.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/so-lab3.tar
+CND_PACKAGE_NAME_Release=my-cli.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/my-cli.tar
 #
 # include compiler specific variables
 #

@@ -4,8 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>mycp.h</itemPath>
-      <itemPath>mytime.h</itemPath>
       <itemPath>parser.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -16,8 +14,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
-      <itemPath>mycp.c</itemPath>
-      <itemPath>mytime.c</itemPath>
       <itemPath>parser.c</itemPath>
       <itemPath>tst.txt</itemPath>
     </logicalFolder>
@@ -37,21 +33,13 @@
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <compilerSet>default</compilerSet>
+        <compilerSet>GNU|GNU</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
       </compileType>
       <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="mycp.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="mycp.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="mytime.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="mytime.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="parser.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -81,14 +69,6 @@
         </asmTool>
       </compileType>
       <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="mycp.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="mycp.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="mytime.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="mytime.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="parser.c" ex="false" tool="0" flavor2="0">
       </item>
